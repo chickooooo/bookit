@@ -1,0 +1,128 @@
+
+Bookit app
+
+
+
+
+
+Info:
+
+- We are following mobile first design principles.
+- We are supporting all the screen sizes all the way from small mobile to large desktops.
+
+
+
+
+
+Menus:
+
+- Home:
+    - Will show the home screen.
+    - Used to see trending & popular shows.
+
+- Explore:
+    - Explore new shows. Access all the shows on the platform.
+    - Used for filtering by show type, genre, etc.
+
+- My Bookings:
+    - Will show user bookings history.
+    - Used to see bookings, cancel bookings, etc.
+
+- Profile:
+    - Used for logging-in, out, about, etc.
+
+
+
+
+
+User flows:
+
+- Ticket booking flow:
+    - User opens the home page / app.
+    - He selects a show. He is taken to show details screen.
+    - He clicks on book ticket CTA.
+    - If the user is not logged in, he is asked to log in.
+    - He is presented with number of tickets option. He selects the number.
+    - He is taken to select seats screen. He selects the seats.
+    - He is taken to confirm booking screen. He review the details and click on confirm booking.
+    - The tickets are booked and the user is taken to my bookings screen.
+
+
+
+
+
+Screens:
+
+- Home screen:
+    - Displays a list of trending & popular show.
+
+    - Components:
+        - A search bar at the top to search for specific shows.
+        - Below the search bar, there will be a carousel of trending shows today.
+        - Below the carousel, there will be a grid of popular shows.
+
+- Search result screen:
+    - Displays the result of search.
+
+    - Components:
+        - A search bar at the top.
+        - A list of shows at the bottom.
+        - Also handle no shows found.
+
+- Show details screen:
+    - Display details about the show.
+
+    - Components:
+        - Show poster at the top.
+        - Show name.
+        - Show performer
+        - Show location
+        - Show date & time
+        - Show price
+        - Show description
+        - Book ticket CTA at the bottom
+
+- Select seats screen:
+    - Display available & occupied seats.
+
+- Confirm booking screen:
+    - Display booking details and presents confirm booking CTA.
+
+- My bookings screen:
+    - Display a list of user bookings.
+
+- My booking details screen:
+    - Display details of a specific user booking.
+    - Include a ticket barcode for scanning.
+    - Include a cancel booking option.
+
+
+
+
+
+UI:
+
+- Cards:
+    - Show grid card:
+        - Show poster
+        - Show name
+        - Show performer
+        - Show location
+        - Show date
+        - Show price
+
+    - Show list card:
+        - Show poster
+        - Show name
+        - Show performer
+        - Show location
+        - Show date
+        - Show price
+
+
+
+APIs:
+
+- Home Screen:
+    - Get trending shows today.
+    - Get popular shows. Paginated API.
