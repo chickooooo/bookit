@@ -126,3 +126,17 @@ APIs:
 - Home Screen:
     - Get trending shows today.
     - Get popular shows. Paginated API.
+
+
+
+
+
+Features:
+
+- Swagger API documentation
+- Containerised using Docker
+- Unit Testing
+
+- Mobile first design
+- Responsive. Support mobile + tablet + desktop
+- Accessibility
