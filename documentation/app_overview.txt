@@ -140,3 +140,5 @@ Features:
 - Mobile first design
 - Responsive. Support mobile + tablet + desktop
 - Accessibility
+
+- flake8 in CI CD pipeline

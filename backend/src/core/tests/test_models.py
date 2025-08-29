@@ -45,7 +45,8 @@ class TestVenueModel(TestCase):
 
     def setUp(self):
         self.city = CityModel.objects.create(
-            name="Bangalore", image_url="https://example.com/bangalore.jpg"
+            name="Bangalore",
+            image_url="https://example.com/bangalore.jpg",
         )
         self.venue1 = VenueModel.objects.create(
             name="Stadium A",
@@ -74,10 +75,7 @@ class TestVenueModel(TestCase):
         self.assertEqual(self.venue1.city, self.city)
         self.assertEqual(self.venue2.city.name, "Bangalore")
         # test reverse lookup
-        self.assertEqual(
-            self.city.venues.count(),  # type: ignore
-            2,
-        )
+        self.assertEqual(self.city.venues.count(), 2)  # type: ignore
 
 
 class TestPerformerModel(TestCase):
@@ -92,14 +90,8 @@ class TestPerformerModel(TestCase):
 
     def test_fields(self):
         """Test performer fields are correctly saved"""
-        self.assertEqual(
-            self.performer.bio,
-            "A talented musician from nowhere.",
-        )
-        self.assertEqual(
-            self.performer.image_url,
-            "https://example.com/johndoe.jpg",
-        )
+        self.assertEqual(self.performer.bio, "A talented musician from nowhere.")
+        self.assertEqual(self.performer.image_url, "https://example.com/johndoe.jpg")
 
     def test_str_method(self):
         """Test that __str__() returns the performer name"""
