@@ -3,14 +3,10 @@ Bookit app
 
 
 
-
-
 Info:
 
-- We are following mobile first design principles.
 - We are supporting all the screen sizes all the way from small mobile to large desktops.
-
-
+- We will design the application for dektop screens and then add responsiveness to support tab & mobile screens.
 
 
 
@@ -22,23 +18,30 @@ Menus:
 
 - Explore:
     - Explore new shows. Access all the shows on the platform.
-    - Used for filtering by show type, genre, etc.
+    - Used for filtering shows. Available filters are:
+        - Search string
+        - Show type
+        - Show date (today, tomorrow & date selector)
 
 - My Bookings:
     - Will show user bookings history.
-    - Used to see bookings, cancel bookings, etc.
+    - Used to see bookings, cancel booking, see bookings details, etc.
 
 - Profile:
-    - Used for logging-in, out, about, etc.
+    - Used for logging-in, out, about, terms & conditions, etc.
 
 
+
+Type of shows supported:
+    - Concert
+    - Sports
 
 
 
 User flows:
 
 - Ticket booking flow:
-    - User opens the home page / app.
+    - User opens the app.
     - He selects a show. He is taken to show details screen.
     - He clicks on book ticket CTA.
     - If the user is not logged in, he is asked to log in.
@@ -47,7 +50,18 @@ User flows:
     - He is taken to confirm booking screen. He review the details and click on confirm booking.
     - The tickets are booked and the user is taken to my bookings screen.
 
+- Get booking details flow:
+    - User opens the app.
+    - He goes to "My Bookings" menu.
+    - He clicks on a specific booking. He is taken to booking details screen.
+    - He can see the booking details.
 
+- Cancel booking flow:
+    - User opens the app.
+    - He goes to "My Bookings" menu.
+    - He clicks on a specific booking. He is taken to booking details screen.
+    - He clicks on "Cancel Booking" CTA. He is asked for confirmation.
+    - Once confirmed, the booking is canceled and is grayed out in "My Bookings" screen.
 
 
 
@@ -57,7 +71,9 @@ Screens:
     - Displays a list of trending & popular show.
 
     - Components:
-        - A search bar at the top to search for specific shows.
+        - Bookit logo on the top-left.
+        - A search bar at the top to search for a specific shows. Clicking on this search bar will take user to explore screen with search filed activated. 
+        - A button to select the location. Clicking on this button will open a popup showing available cities.
         - Below the search bar, there will be a carousel of trending shows today.
         - Below the carousel, there will be a grid of popular shows.
 
@@ -66,21 +82,22 @@ Screens:
 
     - Components:
         - A search bar at the top.
-        - A list of shows at the bottom.
+        - Show type & Show date filter below the search section.
+        - A list of shows below the filters.
         - Also handle no shows found.
 
 - Show details screen:
     - Display details about the show.
 
     - Components:
-        - Show poster at the top.
+        - Show poster.
         - Show name.
         - Show performer
         - Show location
         - Show date & time
         - Show price
         - Show description
-        - Book ticket CTA at the bottom
+        - Book ticket CTA
 
 - Select seats screen:
     - Display available & occupied seats.
