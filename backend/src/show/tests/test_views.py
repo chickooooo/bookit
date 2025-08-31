@@ -1,82 +1,40 @@
-from datetime import timedelta
+from unittest.mock import patch
+
 from django.urls import reverse
-from django.utils import timezone
 from rest_framework import status
 from rest_framework.test import APITestCase
-
-from show.models import ShowModel
-from core.models import CityModel, VenueModel, PerformerModel
 
 
 class TestTrendingShowsView(APITestCase):
     """Test cases for TrendingShowsView"""
 
-    def setUp(self):
-        self.city = CityModel.objects.create(
-            name="Mumbai",
-            image_url="https://example.com/mumbai.jpg",
-        )
-        self.venue = VenueModel.objects.create(
-            name="Concert Hall",
-            city=self.city,
-        )
-        self.performer = PerformerModel.objects.create(
-            name="John Doe",
-            bio="Performer Bio",
-            image_url="https://example.com/performer.jpg",
-        )
-
-        # Trending show
-        ShowModel.objects.create(
-            name="Trending Show",
-            performer=self.performer,
-            venue=self.venue,
-            start_time=timezone.now(),
-            duration=timedelta(hours=2),
-            ticket_price=100,
-            banner_url="https://example.com/banner.jpg",
-            poster_url="https://example.com/poster.jpg",
-            tag=ShowModel.TagChoices.TRENDING,
-            description="A trending event",
-        )
-
-        # Non-trending show
-        ShowModel.objects.create(
-            name="Trending Show 2",
-            performer=self.performer,
-            venue=self.venue,
-            start_time=timezone.now(),
-            duration=timedelta(hours=2),
-            ticket_price=80,
-            banner_url="https://example.com/banner2.jpg",
-            poster_url="https://example.com/poster2.jpg",
-            tag=ShowModel.TagChoices.TRENDING,
-            description="A popular event",
-        )
-
-    def test_get_trending_shows(self):
+    @patch("show.views.ShowClient.get_trending_shows")
+    def test_get_trending_shows(self, mock_get_trending_shows):
         """Test trending-shows API returns trending shows list"""
+
+        # setup mock data
+        show_data = [
+            {
+                "id": 1,
+                "name": "Trending Show",
+                "performer": "John Doe",
+                "banner_url": "https://example.com/banner.jpg",
+            }
+        ]
+        mock_get_trending_shows.return_value = show_data
+
+        # make API request
         endpoint = reverse("trending-shows")
         response = self.client.get(endpoint)
+
+        # verify that mock method was called once
+        mock_get_trending_shows.assert_called_once()
 
         # verify response
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         expected = {
             "status": "SUCCESS",
-            "data": [
-                {
-                    "id": 1,
-                    "name": "Trending Show",
-                    "performer": "John Doe",
-                    "banner_url": "https://example.com/banner.jpg",
-                },
-                {
-                    "id": 2,
-                    "name": "Trending Show 2",
-                    "performer": "John Doe",
-                    "banner_url": "https://example.com/banner2.jpg",
-                },
-            ],
+            "data": show_data,
         }
         self.assertEqual(response.json(), expected)
 
@@ -84,11 +42,18 @@ class TestTrendingShowsView(APITestCase):
 class TestTrendingShowsViewEmpty(APITestCase):
     """Test cases for TrendingShowsView empty response"""
 
-    def test_get_trending_shows_empty(self):
+    @patch("show.views.ShowClient.get_trending_shows")
+    def test_get_trending_shows_empty(self, mock_get_trending_shows):
         """Test trending-shows API returns empty list"""
+        # setup mock data
+        mock_get_trending_shows.return_value = []
 
+        # make API request
         endpoint = reverse("trending-shows")
         response = self.client.get(endpoint)
+
+        # verify that mock method was called once
+        mock_get_trending_shows.assert_called_once()
 
         # verify response
         self.assertEqual(response.status_code, status.HTTP_200_OK)

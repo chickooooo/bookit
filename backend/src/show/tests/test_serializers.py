@@ -1,10 +1,10 @@
+from datetime import timedelta
 from django.test import TestCase
 from django.utils import timezone
 
-from show.models import ShowModel
 from core.models import CityModel, VenueModel, PerformerModel
+from show.models import ShowModel
 from show.serializers import TrendingShowSerializer
-from datetime import timedelta
 
 
 class TestTrendingShowSerializer(TestCase):

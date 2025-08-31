@@ -10,6 +10,7 @@ class TrendingShowsView(APIView):
     """View for trending shows"""
 
     def get(self, request: Request) -> Response:
+        # get trending shows
         client = ShowClient()
         trending_shows = client.get_trending_shows()
 

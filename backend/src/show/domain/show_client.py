@@ -8,7 +8,7 @@ class ShowClient:
 
     def get_trending_shows(self) -> List[Dict]:
         """
-        Retrieve trending shows and returns as a list of dictionaries.
+        Retrieve trending shows and return them as a list of dictionaries.
 
         Sample Response:
             {

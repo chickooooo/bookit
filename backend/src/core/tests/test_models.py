@@ -7,10 +7,12 @@ class TestCityModel(TestCase):
 
     def setUp(self):
         self.city1 = CityModel.objects.create(
-            name="New Delhi", image_url="https://example.com/new-delhi.jpg"
+            name="New Delhi",
+            image_url="https://example.com/new-delhi.jpg",
         )
         self.city2 = CityModel.objects.create(
-            name="Mumbai", image_url="https://example.com/mumbai.jpg"
+            name="Mumbai",
+            image_url="https://example.com/mumbai.jpg",
         )
 
     def test_fields(self):

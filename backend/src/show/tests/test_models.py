@@ -46,7 +46,10 @@ class TestShowModel(TestCase):
         self.assertEqual(self.show.venue.name, "Concert Hall")
         self.assertEqual(
             self.show.start_time,
-            make_aware(datetime(2025, 9, 1, 20, 0), ZoneInfo("Asia/Kolkata")),
+            make_aware(
+                datetime(2025, 9, 1, 20, 0),
+                ZoneInfo("Asia/Kolkata"),
+            ),
         )
         self.assertEqual(self.show.duration, timedelta(hours=2))
         self.assertEqual(self.show.ticket_price, 1500)
